@@ -1,0 +1,74 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            # 创建项目目录
+            mkdir -p /opt/profile-github-io
+            cd /opt/profile-github-io
+
+      - name: Copy files to server
+        uses: appleboy/scp-action@v0.1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT }}
+          source: "index.html,__ai_app.html,colorbox-ai_v2.1.6.js,nba-data.js,name_map.json,pos_map.json,nginx.conf,Dockerfile,docker-compose.yml"
+          target: "/opt/profile-github-io"
+          strip_components: 0
+
+      - name: Copy directories to server
+        uses: appleboy/scp-action@v0.1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT }}
+          source: "resume,static"
+          target: "/opt/profile-github-io"
+          strip_components: 0
+
+      - name: Build and run Docker on server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            cd /opt/profile-github-io
+
+            # 停止旧容器
+            docker compose down 2>/dev/null || true
+            docker rm -f profile-github-io 2>/dev/null || true
+
+            # 构建新镜像
+            docker build -t profile-github-io:latest .
+
+            # 启动新容器
+            docker compose up -d
+
+            # 清理旧镜像
+            docker image prune -f
+
+            echo "✅ Deployment completed successfully!"

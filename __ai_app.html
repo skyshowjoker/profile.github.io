@@ -367,6 +367,10 @@
     padding: 2px 8px; border-radius: 5px;
     background: rgba(245,158,11,0.08);
   }
+  .player-card .player-salary.salary-over {
+    color: var(--danger);
+    background: rgba(239,68,68,0.08);
+  }
   .player-card .stat-pill {
     display: flex; align-items: center; gap: 3px;
     padding: 2px 8px; border-radius: 5px;
@@ -419,6 +423,22 @@
   }
   .pos-slot .slot-player-salary {
     font-size: 0.68rem; color: var(--gold); font-weight: 600;
+  }
+  .slot-remove-btn {
+    position: absolute; top: 3px; left: 3px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: rgba(0,0,0,0.5); color: #fff;
+    font-size: 0.55rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 3;
+    opacity: 0; transition: opacity var(--transition-fast);
+    line-height: 1;
+  }
+  .pos-slot.filled:hover .slot-remove-btn {
+    opacity: 0.8;
+  }
+  .pos-slot.filled:hover .slot-remove-btn:hover {
+    opacity: 1; background: rgba(239,68,68,0.8);
   }
   .captain-badge {
     position: absolute; top: 4px; right: 4px;
@@ -488,6 +508,70 @@
     margin: 0 auto;
     max-width: 420px;
     padding: 0 16px 8px;
+  }
+  /* --- SALARY CAP BAR --- */
+  .salary-cap-bar {
+    padding: 6px 16px 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .salary-cap-bar .cap-label {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--gold);
+    white-space: nowrap;
+    font-size: 0.72rem;
+  }
+  .salary-cap-bar .cap-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 99px;
+    overflow: hidden;
+    position: relative;
+  }
+  .salary-cap-bar .cap-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+    background: linear-gradient(90deg, var(--success), var(--gold));
+  }
+  .salary-cap-bar .cap-fill.warning {
+    background: linear-gradient(90deg, var(--gold), var(--court-orange));
+  }
+  .salary-cap-bar .cap-fill.danger {
+    background: linear-gradient(90deg, var(--danger), #b91c1c);
+  }
+  .salary-cap-bar .cap-text {
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 0.72rem;
+    min-width: 100px;
+    text-align: right;
+  }
+  .salary-cap-bar .cap-text .cap-used {
+    color: var(--text-light);
+  }
+  .salary-cap-bar .cap-text .cap-sep {
+    color: var(--text-muted);
+    margin: 0 2px;
+  }
+  .salary-cap-bar .cap-text .cap-total {
+    color: var(--gold);
+  }
+  /* Player card salary-exceeded state */
+  .player-card.salary-exceeded {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .player-card.salary-exceeded:hover {
+    transform: none;
+    border-color: var(--glass-border);
   }
   /* --- SIMULATION --- */
   .sim-results {
@@ -1261,11 +1345,16 @@
     <!-- STICKY TOP (header text + roster bar) -->
     <div class="sticky-top">
       <div class="header-text" id="gameHeaderText">82-0 完美赛季大挑战</div>
+      <div class="salary-cap-bar" id="salaryCapBar">
+        <span class="cap-label">💰 工资帽</span>
+        <div class="cap-track"><div class="cap-fill" id="capFill" style="width:0%"></div></div>
+        <span class="cap-text"><span class="cap-used" id="capUsed">$0M</span><span class="cap-sep"> / </span><span class="cap-total" id="capTotal">$45M</span></span>
+      </div>
       <div class="roster-bar" id="rosterBar"></div>
     </div>
 
     <div class="selection-hint">
-      <span id="selectionHint">提示：点击已选择球员可以更改其位置</span>
+      <span id="selectionHint">💡 点击已选球员的 ✕ 可移除并返还工资 | 工资超限的球员不可选</span>
     </div>
 
     <!-- SLOT SECTION -->
@@ -1386,8 +1475,10 @@
     <ul>
       <li><strong>5轮选秀，25个赛季</strong> — 每轮老虎机会随机抽出一个<strong>NBA球队</strong>和<strong>赛季</strong>，你从该球队该赛季中挑选一名球员。</li>
       <li><strong>赛季不限，自由选择</strong> — 全部<strong>25个赛季</strong>（2000-01至2024-25）每轮都可出现，可重复选择同一赛季。</li>
+      <li><strong>💰 工资帽限制</strong> — 组队有总工资上限，球员工资超过剩余额度时不可选择。移除球员可返还工资。</li>
       <li><strong>数据为王</strong> — 只有<strong>得分、篮板、助攻</strong> 计入评分。模拟引擎根据这些数据计算球队强度。</li>
       <li><strong>跳过机会</strong> — 每局有<strong>1次球队跳过</strong>和<strong>1次年份跳过</strong>，遇到弱组合时使用。</li>
+      <li><strong>移除球员</strong> — 点击已选球员的 ✕ 按钮可移除球员并返还工资，重新选择。</li>
       <li><strong>非线性模拟</strong> — 82场赛季预测采用曲线模型，越接近82胜越难。只有完美平衡的阵容才能82-0。</li>
     </ul>
     <button class="btn btn-secondary" onclick="closeHowTo()">我知道了</button>
@@ -1543,6 +1634,7 @@ let game = {
   spun: false,
   skipPending: null, // 'team' or 'year'
   captain: null, // 队长所在position key, e.g. 'PG'. null = 未选
+  salaryCap: SALARY_CAP,
 };
 
 // ===================================================================
@@ -1601,6 +1693,72 @@ let SEASON_BENCHMARKS = {};
   }
   console.log('SEASON_BENCHMARKS computed for', Object.keys(SEASON_BENCHMARKS).length, 'seasons');
 })();
+
+// ===================================================================
+//  SALARY CAP — computed from player data
+// ===================================================================
+var SALARY_CAP = 45; // default fallback; overwritten by IIFE below
+
+(function() {
+  // Collect all player salaries
+  const allSalaries = [];
+  for (const teams of Object.values(NBA_DATA)) {
+    for (const players of Object.values(teams)) {
+      for (const p of players) {
+        if (p.salary != null && p.salary > 0) allSalaries.push(p.salary);
+      }
+    }
+  }
+  if (allSalaries.length === 0) return;
+
+  // Calculate salary cap based on per-team top-5 salary totals
+  const teamTop5Totals = [];
+  for (const [season, teams] of Object.entries(NBA_DATA)) {
+    for (const [team, players] of Object.entries(teams)) {
+      const salaries = players.map(p => p.salary || 0).sort((a, b) => b - a);
+      const top5 = salaries.slice(0, 5);
+      teamTop5Totals.push(top5.reduce((s, v) => s + v, 0));
+    }
+  }
+  teamTop5Totals.sort((a, b) => a - b);
+
+  // Use median of team top-5 totals, rounded to nearest 5
+  const median = teamTop5Totals[Math.floor(teamTop5Totals.length / 2)];
+  SALARY_CAP = Math.round(median / 5) * 5;
+  // Ensure a reasonable range
+  SALARY_CAP = Math.max(30, Math.min(60, SALARY_CAP));
+  console.log('SALARY_CAP computed:', SALARY_CAP, '(from median team top-5 total:', median.toFixed(1) + ')');
+})();
+
+function getUsedSalary() {
+  return POS_ORDER.reduce((sum, pos) => {
+    const p = game.slots[pos];
+    return sum + (p && p.salary ? p.salary : 0);
+  }, 0);
+}
+
+function getRemainingSalary() {
+  return SALARY_CAP - getUsedSalary();
+}
+
+function updateSalaryCapUI() {
+  const used = getUsedSalary();
+  const remaining = SALARY_CAP - used;
+  const pct = Math.min(100, (used / SALARY_CAP) * 100);
+
+  const fill = document.getElementById('capFill');
+  const usedEl = document.getElementById('capUsed');
+  const totalEl = document.getElementById('capTotal');
+
+  if (fill) {
+    fill.style.width = pct + '%';
+    fill.classList.remove('warning', 'danger');
+    if (pct >= 90) fill.classList.add('danger');
+    else if (pct >= 70) fill.classList.add('warning');
+  }
+  if (usedEl) usedEl.textContent = '$' + used.toFixed(1) + 'M';
+  if (totalEl) totalEl.textContent = '$' + SALARY_CAP + 'M';
+}
 
 const POSITION_WEIGHTS = {
   PG: { pts: 0.4, reb: 0.1, ast: 0.35, stl: 0.1, blk: 0.05 },
@@ -1745,11 +1903,13 @@ async function startGame() {
     spun: false,
     skipPending: null,
     captain: null,
+    salaryCap: SALARY_CAP,
   };
   pendingPick = null;
   moveState = null;
   showScreen('screen-game');
   renderRosterBar();
+  updateSalaryCapUI();
   nextRound();
 }
 
@@ -1801,6 +1961,7 @@ function renderRosterBar() {
       return `<div class="${cls}${captainCls}" style="${style}" data-pos="${pos}"
                 onclick="onFilledSlotClick('${pos}')">
         ${game.captain === pos ? '<span class="captain-badge">C</span>' : ''}
+        <span class="slot-remove-btn" onclick="event.stopPropagation();removePlayerFromSlot('${pos}')" title="移除球员">✕</span>
         <span class="slot-player-name">${p.name.split('-').pop()}</span>
         <span class="slot-team-season">${teamCN(p.team)} · ${p.season}</span>
         ${p.salary ? `<span class="slot-player-salary">$${p.salary}M</span>` : ''}
@@ -1824,6 +1985,7 @@ function renderRosterBar() {
   
   bar.innerHTML = html;
   updateSkipBadges();
+  updateSalaryCapUI();
 }
 
 
@@ -2132,16 +2294,26 @@ function renderPlayerGrid(team, season) {
   // Shuffle for display
   display = [...display].sort(() => Math.random() - 0.5);
 
-  document.getElementById('playerHint').textContent = '点击球员加入阵容';
+  const remaining = getRemainingSalary();
+  // Check if ALL players are over the cap
+  const allOverCap = display.length > 0 && display.every(p => (p.salary ?? 0) > remaining);
+
+  document.getElementById('playerHint').textContent = allOverCap
+    ? `💰 剩余工资 $${remaining.toFixed(1)}M 不足以签下任何球员，请移除已选球员`
+    : '点击球员加入阵容';
   grid.innerHTML = display.map(p => {
     const posDisplay = p.pos || '??';
     const positionsArr = p.positions && p.positions.length > 0 ? p.positions : [posDisplay];
     const posBadges = positionsArr.map(pos => `<span class="pos-badge">${pos}</span>`).join('');
     const posDataAttr = encodeURIComponent(JSON.stringify(positionsArr));
-    return `<div class="player-card" data-positions='${posDataAttr}' data-weak="${p._weak ? 1 : 0}" onclick="selectPlayer(this, '${p.name.replace(/'/g, "\\'")}', '${posDisplay}', ${p.stats.pts}, ${p.stats.reb}, ${p.stats.ast}, ${p.stats.stl ?? 0}, ${p.stats.blk ?? 0}, ${p.salary ?? 0})">
+    const playerSalary = p.salary ?? 0;
+    const overCap = playerSalary > remaining;
+    const disabledCls = overCap ? ' salary-exceeded' : '';
+    const overCapAttr = overCap ? ' data-over-cap="1"' : '';
+    return `<div class="player-card${disabledCls}" data-positions='${posDataAttr}' data-weak="${p._weak ? 1 : 0}"${overCapAttr} onclick="selectPlayer(this, '${p.name.replace(/'/g, "\\'")}', '${posDisplay}', ${p.stats.pts}, ${p.stats.reb}, ${p.stats.ast}, ${p.stats.stl ?? 0}, ${p.stats.blk ?? 0}, ${playerSalary})">
       <div class="player-name">${p.name}</div>
       <div class="player-positions">${posBadges}</div>
-      <div class="player-salary">$${p.salary}M</div>
+      <div class="player-salary${overCap ? ' salary-over' : ''}">${overCap ? '🚫 ' : ''}$${playerSalary}M</div>
       <div class="player-team">${teamCN(team)} · ${season}</div>
     </div>`;
   }).join('');
@@ -2174,6 +2346,13 @@ function clearPending() {
 }
 
 function selectPlayer(el, name, pos, pts, reb, ast, stl, blk, salary) {
+  // Salary cap check — prevent selecting players over the cap
+  if (el.dataset.overCap === '1') {
+    const remaining = getRemainingSalary();
+    document.getElementById('playerHint').textContent = `💰 工资不足！${name} 工资 $${salary}M 超出剩余额度 ($${remaining.toFixed(1)}M)`;
+    return;
+  }
+
   // If there's a pending pick or move, cancel it
   if (pendingPick || moveState) { clearPending(); }
 
@@ -2228,25 +2407,73 @@ function onEmptySlotClick(pos) {
 function onFilledSlotClick(pos) {
   const player = game.slots[pos];
   if (!player) return;
-  
+
   // If there's a pending pick, cancel it
   if (pendingPick) { clearPending(); return; }
-  
-  // If already in move mode and clicking the source, cancel
+
+  // If already in move mode and clicking the source, remove player
   if (moveState) {
-    if (moveState.currentPos === pos) { clearPending(); return; }
+    if (moveState.currentPos === pos) {
+      moveState = null;
+      removePlayerFromSlot(pos);
+      return;
+    }
     // Clicking a different filled slot — start new move
   }
-  
+
   // Find other eligible empty positions for this player
   const playerPositions = player.positions || getPositions(player.pos);
   const emptyEligible = playerPositions.filter(p => p !== pos && !game.slots[p]);
-  
-  if (emptyEligible.length === 0) return; // nowhere to move
-  
+
+  if (emptyEligible.length === 0) {
+    // No move targets — offer to remove the player (refund salary)
+    removePlayerFromSlot(pos);
+    return;
+  }
+
   moveState = { player, currentPos: pos, targetPositions: emptyEligible };
-  document.getElementById('playerHint').textContent = `点击闪烁的方框移动 ${player.name.split('-').pop()}`;
+  document.getElementById('playerHint').textContent = `点击闪烁的方框移动 ${player.name.split('-').pop()}，点击该球员可移除`;
   renderRosterBar();
+}
+
+function removePlayerFromSlot(pos) {
+  const player = game.slots[pos];
+  if (!player) return;
+  const name = player.name;
+  const salary = player.salary || 0;
+
+  // Remove from slot
+  game.slots[pos] = null;
+
+  // Remove from roster
+  const idx = game.roster.findIndex(r => r.assignedPos === pos);
+  if (idx >= 0) game.roster.splice(idx, 1);
+
+  // Remove used season/combo for this pick
+  const combo = player.season + '|' + player.team;
+  const comboIdx = game.usedCombos.indexOf(combo);
+  if (comboIdx >= 0) game.usedCombos.splice(comboIdx, 1);
+  const seasonIdx = game.usedSeasons.lastIndexOf(player.season);
+  if (seasonIdx >= 0) game.usedSeasons.splice(seasonIdx, 1);
+
+  // Adjust round counter
+  if (game.round > 0) game.round--;
+
+  // Clear captain if removed player was captain
+  if (game.captain === pos) game.captain = null;
+
+  // Clear pending states
+  pendingPick = null;
+  moveState = null;
+
+  // Re-render roster bar and salary cap
+  renderRosterBar();
+
+  document.getElementById('playerHint').textContent = `✅ ${name.split('-').pop()} 已移除，工资 $${salary}M 已返还`;
+
+  // Go back to draft mode — show the slot machine again
+  // This handles both mid-draft and captain-selection removal
+  nextRound();
 }
 
 // Legacy alias for drag-drop compatibility
@@ -2571,6 +2798,7 @@ function testBestPlayers() {
     currentSeason: null,
     spun: false,
     skipPending: null,
+    salaryCap: SALARY_CAP,
   };
 
   // Collect all players across all seasons & teams
