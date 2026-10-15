@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joey Wei Lai | AI Application & Agent Engineer | Resume</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #59636e;
+      --accent: #0b5563;
+      --rule: #cbd4d8;
+      --soft: #edf3f4;
+    }
+    * { box-sizing: border-box; }
+    @page { size: A4; margin: 9mm 11mm; }
+    html, body { margin: 0; padding: 0; background: white; color: var(--ink); }
+    body {
+      font-family: Arial, "Helvetica Neue", sans-serif;
+      font-size: 8.8pt;
+      line-height: 1.27;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page { width: 100%; }
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: end;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--accent);
+    }
+    h1 { margin: 0; font-size: 22pt; line-height: 1; letter-spacing: .5px; }
+    .target { margin-top: 4px; color: var(--accent); font-size: 10.7pt; font-weight: 700; }
+    .contact { text-align: right; color: var(--muted); font-size: 8.2pt; line-height: 1.45; }
+    .contact a { color: inherit; text-decoration: none; }
+    section { margin-top: 6px; }
+    h2 {
+      margin: 0 0 3px;
+      color: var(--accent);
+      font-size: 10.4pt;
+      line-height: 1.15;
+      letter-spacing: .45px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    h2::after { content: ""; height: 1px; background: var(--rule); flex: 1; }
+    p { margin: 0; }
+    .summary { font-size: 8.9pt; }
+    .highlights { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-top: 5px; }
+    .metric { background: var(--soft); padding: 4px 6px; text-align: center; }
+    .metric strong { display: block; color: var(--accent); font-size: 11.5pt; line-height: 1.05; }
+    .metric span { color: var(--muted); font-size: 7.3pt; }
+    .skills { display: grid; grid-template-columns: 1fr 1fr; column-gap: 15px; row-gap: 2px; }
+    .skill-row strong { color: var(--ink); }
+    .skill-row span { color: var(--muted); }
+    .job { margin-top: 4px; break-inside: avoid; }
+    .job:first-of-type { margin-top: 0; }
+    .job-head { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 10px; }
+    .job-title { font-size: 9.2pt; font-weight: 700; }
+    .job-title b { color: var(--accent); }
+    .date { color: var(--muted); white-space: nowrap; font-size: 8pt; }
+    ul { margin: 2px 0 0; padding-left: 15px; }
+    li { margin: 1px 0; padding-left: 1px; }
+    li::marker { color: var(--accent); }
+    .project-grid { display: grid; grid-template-columns: 1.18fr .82fr; gap: 15px; }
+    .subhead { font-weight: 700; font-size: 8.9pt; margin-bottom: 1px; }
+    .meta { color: var(--muted); }
+    .education-row { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 3px; }
+    .education-row:last-child { margin-bottom: 0; }
+    .education-row b { font-weight: 700; }
+    @media screen {
+      body { background: #e9edef; }
+      .page { width: 210mm; min-height: 297mm; margin: 18px auto; padding: 9mm 11mm; background: white; box-shadow: 0 2px 14px rgba(0,0,0,.12); }
+    }
+    @media print { .page { padding: 0; } }
+  </style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <div>
+      <h1>Joey Wei Lai <span style="font-size:11pt;font-weight:500;color:#59636e">魏来</span></h1>
+      <div class="target">AI Application & Agent Engineer | GenAI · Agent Orchestration · FinTech</div>
+    </div>
+    <div class="contact">
+      <div>173 9624 5416 &nbsp; <a href="mailto:skyshowjoker@gmail.com">skyshowjoker@gmail.com</a></div>
+      <div><a href="https://skyshowjoker.github.io">skyshowjoker.github.io</a> &nbsp;·&nbsp; <a href="https://github.com/skyshowjoker">github.com/skyshowjoker</a></div>
+    </div>
+  </header>
+
+  <section>
+    <h2>PROFESSIONAL SUMMARY</h2>
+    <p class="summary">Software engineer with 5 years of enterprise experience spanning <strong>generative AI applications, AI agent platforms, machine learning, and financial technology</strong>. Currently developing cloud-side planning agents for Huawei Xiaoyi, with end-to-end experience from requirements clarification and rapid prototyping to architecture, production deployment, and commercialization. Previously spent 4 years building Citi's liquidity risk management platform, with strong knowledge of security, compliance, and engineering governance in regulated environments. Proficient in Python/Java, agent orchestration, prompt engineering, cloud-native technologies, and cross-functional collaboration.</p>
+    <div class="highlights">
+      <div class="metric"><strong>5 Years</strong><span>Software Engineering</span></div>
+      <div class="metric"><strong>4+</strong><span>AI Projects</span></div>
+      <div class="metric"><strong>2</strong><span>AI Publications</span></div>
+      <div class="metric"><strong>4 Years</strong><span>Financial Services</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>CORE COMPETENCIES</h2>
+    <div class="skills">
+      <div class="skill-row"><strong>GenAI / Agents:</strong> <span>Multi-agent orchestration, MCP, A2A, Subagent, Prompt, Channel, intent recognition, tool integration</span></div>
+      <div class="skill-row"><strong>Programming & Architecture:</strong> <span>Python, Java, Spring Boot, REST APIs, microservices, design patterns, distributed systems</span></div>
+      <div class="skill-row"><strong>AI / ML:</strong> <span>PyTorch, nnU-Net, XGBoost, image segmentation, feature engineering, model training and evaluation</span></div>
+      <div class="skill-row"><strong>Data & Platforms:</strong> <span>Oracle, MySQL, Redis, Kafka, Docker, Kubernetes / OpenShift, Jenkins CI/CD</span></div>
+      <div class="skill-row"><strong>Engineering Governance:</strong> <span>Sonar, Black Duck, AppDynamics, performance tuning, vulnerability management, observability, canary releases</span></div>
+      <div class="skill-row"><strong>Industry & Collaboration:</strong> <span>Liquidity risk, banking SDLC, change control, security audits, global teams, business communication</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>PROFESSIONAL EXPERIENCE</h2>
+    <div class="job">
+      <div class="job-head">
+        <div class="job-title"><b>Huawei</b> | OD | Software Engineer | Xiaoyi Voice Assistant — AI Agent</div>
+        <div class="date">Jun 2025 – Present</div>
+      </div>
+      <ul>
+        <li><strong>Agent Platform:</strong> Served as a core developer for cloud-side algorithm and engineering modules. Designed a Python/Java multi-agent orchestration engine that supports complex, long-running tasks through parallel execution and dynamic load balancing; resolved engineering challenges including long-running task continuity and improved system throughput by approximately 40%.</li>
+        <li><strong>End-to-End Delivery:</strong> Covered the full workflow from dialogue routing and intent recognition to task execution. Improved intent accuracy in key scenarios to 92%+ through prompt optimization and multi-turn strategy tuning, supporting the generation of reports, presentations, skills, mobile cards, documents, and code.</li>
+        <li><strong>Innovation Prototyping:</strong> Rapidly designed and developed multiple agent projects recognized by customers: Task Space, a general-purpose agent that decomposes goals, searches for information, invokes tools, writes code, operates web pages, and delivers files; Xiaoyi Claw; VibeSkill, a platform for creating, reusing, and sharing professional workflows through natural language; AI Mobile Card Generation, which orchestrates mobile app functions based on user intent and creates custom home-screen shortcut cards; and AIPPT, which generates presentations from deep-research content and PPT templates.</li>
+        <li><strong>Production & Commercialization:</strong> Applied cloud-native practices with Docker/Kubernetes for independent deployment, elastic scaling, and canary releases. Owned network topology design, project management, delivery, and release for AI Mobile Card Generation; delivered multiple agents from solution validation through development and commercialization, and contributed to Huawei's open-source agent project jiuwenswarm.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="job-title"><b>Citi</b> | Software Engineer | Global Liquidity Risk Management Platform</div>
+        <div class="date">Jul 2021 – Jun 2025</div>
+      </div>
+      <ul>
+        <li><strong>Financial Solution Delivery:</strong> As a core member of a cross-border China/India/US engineering team, contributed across requirements, architecture, development, reviews, and production releases for an enterprise platform covering risk assessments, quality reviews, approvals, issue tracking, and regulatory reporting.</li>
+        <li><strong>Rapid Solution & Productization:</strong> Led an Excel-like dynamic table engine supporting template configuration, storage, calculation, and export. Replaced manual workflows with a low-code approach, reducing related development costs by approximately 90% while improving efficiency, compliance, and data security.</li>
+        <li><strong>Platform Modernization & Cost Reduction:</strong> Developed a dynamic reporting module to replace MSTR and designed a lightweight workflow engine to replace JBPM, saving approximately USD 500K annually in licensing and maintenance costs.</li>
+        <li><strong>Engineering in a Regulated Environment:</strong> Led major Spring Boot/Java upgrades; built CI/CD capabilities with Jenkins, Docker, and OpenShift, and advanced code quality, performance, and vulnerability governance using Sonar, Black Duck, and AppDynamics.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>AI RESEARCH & EDUCATION</h2>
+    <div class="project-grid">
+      <div>
+        <div class="subhead">Orbital Lymphoma Pathology Classification & Management System</div>
+        <p>Independently completed the full pipeline of data processing, image segmentation, feature extraction, model training, and evaluation. Enhanced an nnU-Net segmentation model, combined spatial and texture features, and used XGBoost for classification, achieving 87% accuracy. Results were published in an SCI-indexed journal and presented at an EI-indexed international conference.</p>
+      </div>
+      <div>
+        <div class="education-row"><span><b>East China Normal University</b><br><span class="meta">M.Eng. in Electronic Information (Part-time)</span></span><span class="date">2021–2024</span></div>
+        <div class="education-row"><span><b>Sichuan University</b><br><span class="meta">B.Eng. in Software Engineering</span></span><span class="date">2016–2021</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

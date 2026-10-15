@@ -6,6 +6,7 @@
 
 # 临时文件
 temp/
+.history/*
 
 # 系统文件
 .DS_Store

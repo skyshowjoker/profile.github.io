@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resume - Wei Lai - Software Engineer</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.0/remodal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.0/remodal-default-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.0/remodal.min.js"></script>
+    <script src="static/js/script.js"></script>
+</head>
+
+<body>
+    <div class="container" id="cv">
+        <div class="side">
+            <div class="me">
+                <div class="portrait"></div>
+                <div class="remodal remodal-img" data-remodal-id="portrait-modal">
+                    <h3>Please enter image URL:</h3>
+                    <br/>
+                    <input type="text" id="avatar-url">
+                    <button data-remodal-action="confirm" class="remodal-confirm">Confirm</button>
+                </div>
+                <h1 id="username" >Wei Lai Joey</h1>
+                <h4 id="persona-tag" >Software Engineer / AI & Cloud-Native Architecture / AI Agent</h4>
+            </div>
+            <div class="profile info-unit">
+                <h2 class="info-header"><i class="iconfont icon-person"></i> <span class="info-title">Basic Info</span></h2>
+                <hr>
+                <ul class="info-list">
+                    <li>
+                        <label class="left-label">Name</label><span class="label-value">Wei Lai</span></li>
+                    <li>
+                        <label class="left-label">Education</label><span class="label-value">Master's Degree</span></li>
+                    <li>
+                        <label class="left-label">University</label><span class="label-value">East China Normal University</span></li>
+                    <li>
+                        <label class="left-label">Experience</label><span class="label-value">5 Years</span></li>
+                    <li>
+                        <label class="left-label">Graduation</label><span class="label-value">2024</span></li>
+                </ul>
+            </div>
+            <div class="contact info-unit">
+                <h2 class="info-header"><i class="iconfont icon-call"></i> <span class="info-title">Contact</span></h2>
+                <hr>
+                <ul class="info-list">
+                    <li>
+                        <label class="left-label">Phone</label><span class="label-value">17396245416</span></li>
+                    <li>
+                        <label class="left-label">Email</label><span class="label-value">skyshowjoker@gmail.com</span></li>
+                    <li>
+                        <label class="left-label">Homepage</label><span class="label-value">skyshowjoker.github.io</span></li>
+                    <li>
+                        <label class="left-label">Github</label><span class="label-value">github.com/skyshowjoker</span></li>
+                </ul>
+            </div>
+            <div class="skill info-unit">
+                <h2 class="info-header"><i class="iconfont icon-star"></i> <span class="info-title">Skills</span></h2>
+                <hr>
+                <ul class="progress-list">
+                    <li>
+                        <label class="left-label">Python/Java</label>
+                        <progress value="85" max="100"></progress>
+                    </li>
+                    <li>
+                        <label class="left-label">Cloud-Native (K8s/Docker)</label>
+                        <progress value="80" max="100"></progress>
+                    </li>
+                    <li>
+                        <label class="left-label">AI/Deep Learning</label>
+                        <progress value="78" max="100"></progress>
+                    </li>
+                    <li>
+                        <label class="left-label">Web Full-Stack Architecture</label>
+                        <progress value="72" max="100"></progress>
+                    </li>
+                </ul>
+            </div>
+            <div class="stack info-unit">
+                <h2 class="info-header"><i class="iconfont icon-build"></i> <span class="info-title">Tech Stack</span></h2>
+                <hr>
+                <ul class="stack-list">
+                    <li>
+                        <label class="left-label">Programming</label><span class="label-value">Python, C/C++, Java, Node.js, SQL</span>
+                    </li>
+                    <li>
+                        <label class="left-label">AI/Parallel Computing</label><span class="label-value">PyTorch, nnU-Net, CUDA, XGBoost</span>
+                    </li>
+                    <li>
+                        <label class="left-label">Cloud-Native/DevOps</label><span class="label-value">Kubernetes, Docker, Istio, Jenkins, GitLab CI, Argo CD</span>
+                    </li>
+
+                    <li>
+                        <label class="left-label">Database</label><span class="label-value">PostgreSQL, MySQL, Oracle, Redis, MongoDB</span>
+                    </li>
+                    <li>
+                        <label class="left-label">Backend Frameworks</label><span class="label-value">Spring Boot, FastAPI, Express.js</span>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="main">
+            <div class="education info-unit right-list">
+                <h2 class="info-header"><i class="iconfont icon-education"></i> <span class="info-title">Education</span></h2>
+                <hr>
+                <ul class="experience-list">
+                    <li>
+                        <h3>Sichuan University - Software Engineering (Bachelor's) 2016.09 - 2021.06</h3>
+                    </li>
+                    <li>
+                        <h3>East China Normal University - Electronic Information (Master's, Part-time) 2021.09 - 2024.06</h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="work info-unit right-list">
+                <h2 class="info-header"><i class="iconfont icon-work"></i> <span class="info-title">Work Experience</span></h2>
+                <hr>
+                <ul class="experience-list">
+                    <h4>Huawei (Outsourcing Dispatch) - Software Engineer : 2025.06 - Present</h4>
+                    <li>
+                    <h3>Xiaoyi Voice Assistant - AI Agent & Cloud-Native System Development</h3>
+                    <p><b>Business:</b>Developed planning service AI agents based on the Xiaoyi terminal platform. Using MCP protocol and platform A2A protocol, built agent orchestration and planning services to automate complex long-duration tasks, covering the full pipeline from dialogue routing, intent recognition to task execution.
+                    </p>
+                    <p><b>Experience:</b>
+
+                        <strong>AI System Architecture & Engineering:</strong>Led cloud-side algorithm and engineering module development. Designed and implemented a multi-agent collaborative scheduling engine. Developed core scheduling services using Python/Java, supporting parallel task orchestration with dynamic load balancing in high-concurrency scenarios, achieving ~40% throughput improvement.<br>
+
+                        <strong>Cloud-Native Architecture & Microservice Governance:</strong>Built cloud-native deployment architecture based on Kubernetes/Docker. Designed microservice splitting strategy, achieving independent deployment, elastic scaling, and canary releases for agent services, ensuring high system availability.<br>
+
+                        <strong>CI/CD Pipeline Construction:</strong>Led the setup of continuous integration and deployment pipeline based on Huawei Cloud Platform. Achieved full automation from code commit → automated testing → image building → K8s deployment. Deployment efficiency improved by 60%, feature iteration cycle shortened by 50%.<br>
+
+                        <strong>Low-Code Configurable Platform:</strong>Designed and implemented "external agent pluggable" architecture, enabling rapid integration of third-party agents/tools. Promoted full configuration management of Prompt templates and business rules, reducing operational costs by ~60%.<br>
+
+                        <strong>AI Agent Commercialization:</strong>Led the full-cycle development and commercialization of the AIPPT agent, responsible from requirement analysis, architecture design to development delivery.
+                    </p>
+                    </li>
+
+                    <h4>Citi Financial Services - Software Engineer : 2021.07 - 2025.06</h4>
+                    <li>
+                        <h3>Liquidity Risk Management Platform - Enterprise IT System Development</h3>
+                        <p><b>Business:</b>Digitalized global liquidity risk review processes. Built workflow-based IT management systems supporting assessment result capture, quality review, approval, issue tracking, and multi-granularity report generation, serving global business teams across multiple regions.
+                        </p>
+                        <p><b>Experience:</b>
+                            <br><strong>Full-Cycle IT System Development:</strong>As a core member of a cross-national R&D team (China/India/US), deeply participated in the full product lifecycle. Led technical solution design, architecture review, coding implementation, and quality verification for multiple critical requirements, driving high-quality delivery. Possessed complete software lifecycle management experience (requirement management → architecture design → coding → CI/CD → verification → configuration management).
+                            <br><strong>System Architecture Design & Optimization:</strong>Designed and implemented an Excel-like dynamic table engine supporting template configuration, storage, computation, and export. Replaced original manual Excel workflows with a low-code approach, reducing development costs by ~90%. Independently developed dynamic report generation module to replace MSTR commercial dependency, designed lightweight workflow engine to replace JBPM, saving ~$2M annually in procurement and maintenance costs.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

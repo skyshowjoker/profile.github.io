@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>简历-魏来-全栈开发工程师</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.0/remodal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.0/remodal-default-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.0/remodal.min.js"></script>
+    <script src="static/js/script.js"></script>
+</head>
+
+<body>
+    <div class="container" id="cv">
+        <div class="side">
+            <div class="me">
+                <div class="portrait"></div>
+                <div class="remodal remodal-img" data-remodal-id="portrait-modal">
+                    <h3>请输入图片URL地址：</h3>
+                    <br/>
+                    <input type="text" id="avatar-url">
+                    <button data-remodal-action="confirm" class="remodal-confirm">确定</button>
+                </div>
+                <h1 id="username" >魏来 Joey</h1>
+                <h4 id="persona-tag" >全栈开发 / Web架构 / 微服务</h4>
+            </div>
+            <div class="profile info-unit">
+                <h2 class="info-header"><i class="iconfont icon-person"></i> <span class="info-title">基本信息</span></h2>
+                <hr>
+                <ul class="info-list">
+                    <li>
+                        <label class="left-label">姓名</label><span class="label-value">魏来</span></li>
+                    <li>
+                        <label class="left-label">学历</label><span class="label-value">硕士</span></li>
+                    <li>
+                        <label class="left-label">毕业院校</label><span class="label-value">华东师范大学</span></li>
+                    <li>
+                        <label class="left-label">工作年限</label><span class="label-value">4年+</span></li>
+                    <li>
+                        <label class="left-label">毕业年份</label><span class="label-value">2024</span></li>
+                </ul>
+            </div>
+            <div class="contact info-unit">
+                <h2 class="info-header"><i class="iconfont icon-call"></i> <span class="info-title">联系方式</span></h2>
+                <hr>
+                <ul class="info-list">
+                    <li>
+                        <label class="left-label">手机</label><span class="label-value">17396245416</span></li>
+                    <li>
+                        <label class="left-label">邮箱</label><span class="label-value">skyshowjoker@gmail.com</span></li>
+                    <li>
+                        <label class="left-label">个人主页</label><span class="label-value">skyshowjoker.github.io</span></li>
+                    <li>
+                        <label class="left-label">Github</label><span class="label-value">github.com/skyshowjoker</span></li>
+                </ul>
+            </div>
+            <div class="skill info-unit">
+                <h2 class="info-header"><i class="iconfont icon-star"></i> <span class="info-title">技能点</span></h2>
+                <hr>
+                <ul class="progress-list">
+                    <li>
+                        <label class="left-label">JavaScript/React</label>
+                        <progress value="90" max="100"></progress>
+                    </li>
+                    <li>
+                        <label class="left-label">Python后端开发</label>
+                        <progress value="88" max="100"></progress>
+                    </li>
+                    <li>
+                        <label class="left-label">Web全栈架构</label>
+                        <progress value="85" max="100"></progress>
+                    </li>
+                    <li>
+                        <label class="left-label">数据库/缓存</label>
+                        <progress value="80" max="100"></progress>
+                    </li>
+                </ul>
+            </div>
+            <div class="stack info-unit">
+                <h2 class="info-header"><i class="iconfont icon-build"></i> <span class="info-title">技术栈</span></h2>
+                <hr>
+                <ul class="stack-list">
+                    <li>
+                        <label class="left-label">前端开发</label><span class="label-value">React, Angular, JavaScript/TypeScript, HTML/CSS</span>
+                    </li>
+                    <li>
+                        <label class="left-label">后端开发</label><span class="label-value">Python, Java/Spring Boot, Node.js</span>
+                    </li>
+                    <li>
+                        <label class="left-label">数据库</label><span class="label-value">MySQL, Oracle, Redis, MongoDB</span>
+                    </li>
+                    <li>
+                        <label class="left-label">系统架构</label><span class="label-value">微服务架构, RESTful API, 分布式系统</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="code info-unit">
+                <h2 class="info-header"><i class="iconfont icon-weixin"></i> <span class="info-title">个人微信</span></h2>
+                <hr>
+                <div class="weixin">
+                    <img src="static/image/wechat.jpg" alt="">
+                </div>
+            </div>
+            <div class="remodal remodal-img" data-remodal-id="weixin-modal">
+                <h3>请输入图片URL地址：</h3>
+                <br/>
+                <input type="text" id="weixin-url">
+                <button data-remodal-action="confirm" class="remodal-confirm">确定</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="education info-unit right-list">
+                <h2 class="info-header"><i class="iconfont icon-education"></i> <span class="info-title">教育经历</span></h2>
+                <hr>
+                <ul class="experience-list">
+                    <li>
+                        <h3>四川大学 - 软件工程专业（本科）2016.09 - 2021.06</h3>
+                    </li>
+                    <li>
+                        <h3>华东师范大学 - 电子信息专业（非全日制硕士）2021.09 - 2024.06</h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="work info-unit right-list">
+                <h2 class="info-header"><i class="iconfont icon-work"></i> <span class="info-title">工作经历</span></h2>
+                <hr>
+                <ul class="experience-list">
+                    <h4>华为软件工程师 ： 2025年6月 - 至今</h4>
+                    <li>
+                        <h3>小艺语音助手 - Web服务与智能体开发</h3>
+                        <p><b>项目背景：</b>基于终端小艺平台研发规划服务智能体，采用MCP协议和平台A2A协议开发智能体编排和规划服务，实现复杂长时任务的自动化处理。
+                        </p>
+                        <p><b>核心职责：</b>
+                            <br><strong>全栈服务开发：</strong>负责Web前后端服务开发与迭代维护，完成管理系统核心业务逻辑落地。使用Python开发后端服务接口，React框架实现前端交互界面，完成权限体系搭建与数据模型构建。
+                            <br><strong>系统架构优化：</strong>设计并实现多智能体协同调度引擎（微服务架构），支持高并发场景下的任务并行化编排与动态负载均衡，系统吞吐量提升约40%。基于Redis缓存与MySQL数据库优化数据访问性能。
+                            <br><strong>运维与故障排查：</strong>参与基础技术能力建设，推进服务拆分、调用链路、日志监控体系搭建。建立服务监控与故障排查机制，负责日常故障排查与技术方案的持续改进。
+                            <br><strong>跨团队协同：</strong>协同产品、业务、运维等多角色，梳理业务流程，高效推进需求，从沟通确认、开发落地到交付验收的全闭环管理。成功推动AIPPT智能体商业落地。
+                        </p>
+                    </li>
+
+                    <h4>花旗软件工程师 ： 2021年7月 - 2025年6月</h4>
+                    <li>
+                        <h3>流动性风险管理平台 - 企业级信息化系统开发</h3>
+                        <p><b>业务：</b>数字化全球流动性风险审查流程，构建基于工作流的IT管理系统，支持评估结果捕获、质量审查、批准、问题跟踪及多粒度报告生成。企业级信息化系统，服务全球多个地区的业务团队。
+                        </p>
+                        <p><b>经验：</b>
+                            <br><strong>Web系统全流程建设：</strong>作为跨国产研团队（中/印/美）核心成员，负责产品信息管理系统的全流程建设，包括需求调研分析、技术方案设计、功能开发实现及上线后的运维支持工作。
+                            <br><strong>前后端服务开发：</strong>负责Web前后端服务的开发与迭代维护。后端使用Java/Spring Boot开发RESTful API，前端使用Angular框架实现动态交互界面。完成管理系统核心业务逻辑落地、接口规范设计、权限体系搭建、数据模型构建。
+                            <br><strong>系统性能优化：</strong>主导设计并实现类Excel动态表格引擎（前后端协同），支持模板配置、存储、计算与导出。独立开发动态报表生成模块，优化数据库查询性能，提升系统稳定性。
+                            <br><strong>DevOps与系统维护：</strong>基于Jenkins、Docker、OpenShift构建CI/CD流程，实现服务的自动化部署与运维。使用监控工具进行性能优化与故障排查，保障系统稳定运行。开发批处理模块，负责线上系统维护。
+                        </p>
+                    </li>
+                    <p><b>技术栈：</b>Python, Java/Spring Boot, JavaScript/Angular, React, MySQL, Oracle, Redis, Docker, Jenkins, OpenShift, Kafka</p>
+                </ul>
+            </div>
+
+
+            <div class="aboutme info-unit right-paragraph">
+                <h2 class="info-header"><i class="iconfont icon-flower"></i> <span class="info-title">自我评价</span></h2>
+                <hr>
+                <p>
+                    <strong>全栈开发能力：</strong>4年+Web开发经验，熟练掌握JavaScript/React前端框架与Python/Java后端开发。具备企业级信息化系统开发实战经验，熟悉系统建设全流程，从前端交互到后端逻辑、从数据模型到系统运维均有丰富实践。<br>
+
+                    <strong>Web架构与性能优化：</strong>深入理解网络协议、系统架构设计、数据存储、缓存及信息安全等核心技术要点。主导过多个系统架构升级与性能优化项目，熟悉Redis缓存、MySQL数据库优化、分布式系统设计。<br>
+
+                    <strong>企业级系统经验：</strong>在花旗4年金融系统开发经验，负责企业级信息化系统的需求分析、技术设计、开发实现与运维支持。熟悉权限体系搭建、接口规范设计、数据模型构建，具备完整的系统建设能力。<br>
+
+                    <strong>跨团队协作能力：</strong>具备积极乐观的工作态度，沟通能力强，有着良好的业务sense。在跨国产研团队（中/印/美）工作多年，注重团队合作精神，拥有良好的跨团队沟通协作能力。<br>
+
+                    <strong>持续学习与技术创新：</strong>快速适应新技术栈，推动AI模型集成、智能体系统开发。开源项目贡献者，研究成果发表于SCI/EI，具备技术深度与创新能力。<br>
+                 </p>
+                <p><b>爱好：</b>健身，跑步，羽毛球</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
